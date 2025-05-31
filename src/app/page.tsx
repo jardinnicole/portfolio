@@ -12,7 +12,8 @@ import {
   Smartphone,
   Menu,
   X,
-  ChevronDown
+  ChevronDown,
+  Download
 } from 'lucide-react'
 
 
@@ -20,7 +21,7 @@ export default function Portfolio() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
 
-  useEffect(() => {
+useEffect(() => {
     const handleScroll = () => {
       const sections = ['home', 'about', 'projects', 'contact']
       const current = sections.find(section => {
@@ -38,22 +39,55 @@ export default function Portfolio() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // TypingEffect Component
+type TypingEffectProps = {
+  text: string;
+  speed?: number;
+};
+
+const TypingEffect = ({ text, speed = 150 }: TypingEffectProps) => {
+  const [displayedText, setDisplayedText] = useState('');
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    if (currentIndex < text.length) {
+      const timeout = setTimeout(() => {
+        setDisplayedText(prev => prev + text[currentIndex]);
+        setCurrentIndex(prev => prev + 1);
+      }, speed);
+
+      return () => clearTimeout(timeout);
+    }
+  }, [currentIndex, text, speed]);
+
+  return (
+    <span>
+      {displayedText.split('\n').map((line, index) => (
+        <span key={index}>
+          {line}
+          {index < displayedText.split('\n').length - 1 && <br />}
+        </span>
+      ))}
+      <span className="animate-pulse">|</span>
+    </span>
+  );
+};
+
+
   const projects = [
     {
       title: "Salonytics: A Web-based Resource Management System with Predictive Analytics",
       description: "A comprehensive web application for managing resources, schedules, and analytics in salons.",
       tech: ["ASP.Net", "MS SQL", "Azure", "ML.NET", "Bootstrap"],
       image: "/images/salonytics.png",
-      github: "#",
-      live: "#"
     },
     {
-      title: "Task Management App",
-      description: "Collaborative project management tool with real-time updates, drag-and-drop interface.",
-      tech: ["React", "Node.js", "Socket.io", "MongoDB"],
-      image: "/api/placeholder/400/250",
-      github: "#",
-      live: "#"
+      title: "Barangay Census App",
+      description: "The Barangay Census App is a digital tool that enables efficient collection, management, and analysis of resident and household data for improved local governance and service delivery.",
+      tech: ["React", "Node.js", "MongoDB"],
+      image: "/images/brgy-census.png",
+      github: "https://github.com/jardinnicole/brgy-census-app",
+      live: "https://brgy-census-app.vercel.app/dashboard"
     },
     {
       title: "Weather Dashboard",
@@ -163,6 +197,8 @@ export default function Portfolio() {
         </AnimatePresence>
       </nav>
 
+
+
       {/* Hero Section */}
       <section id="home" className="mt-18 min-h-screen flex items-center justify-center px-4">
         <div className="text-center max-w-4xl mx-auto">
@@ -173,18 +209,39 @@ export default function Portfolio() {
             className="mb-8"
           >
             <h1 className="text-5xl md:text-7xl font-bold text-left mb-6">
-              <span className="gradient-text">hi! <br></br> i'm nicole.</span>
+              <span className="gradient-text">
+                <TypingEffect text="hi! i'm nicole." />
+              </span>
             </h1>
             <p className="text-lg md:text-xl text-gray-300 mb-8 text-left">
               Full-Stack Developer | Customer Support | General VA
             </p>
             <p className="text-lg text-gray-400 max-w-2xl mx-auto mb-12 text-left">
-               Code by day, support hero by… also day (and sometimes night). I build sleek, functional web apps, wrangle inboxes, tame to-do lists, and sprinkle in just enough charm to make tech feel human.  
+              Code by day, support hero by… also day (and sometimes night). I build sleek, functional web apps, wrangle inboxes, tame to-do lists, and sprinkle in just enough charm to make tech feel human.  
                 <br /><br />
-                Whether it’s debugging your app, managing your calendar, or creating eye-catching digital art that actually stops the scroll — I’m your person.  
+                Whether it's debugging your app, managing your calendar, or creating eye-catching digital art that actually stops the scroll — I'm your person.  
                 <br /><br />
                 I handle the busy work so you can focus on the big work — with a splash of color and a touch of code.
             </p>
+            
+            {/* Download CV Button */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
+              className="mb-12 text-left"
+            >
+              <motion.a
+                href="/resume/JARDIN, NICOLE ALEXANDRA RESUME.pdf" // Replace with your actual CV path
+                download="Nicole_Jardin_CV.pdf"
+                className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-full hover:from-purple-700 hover:to-pink-700 transition-all duration-300 shadow-lg hover:shadow-xl"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Download size={20} className="mr-2" />
+                Download CV
+              </motion.a>
+            </motion.div>
             
             <div className="flex justify-center space-x-6 mb-12">
               {[
@@ -215,6 +272,7 @@ export default function Portfolio() {
           </motion.div>
         </div>
       </section>
+
 
 
       {/* About Section */}
@@ -274,7 +332,7 @@ export default function Portfolio() {
             viewport={{ once: true }}
             className="text-center"
           >
-            <h3 className="text-2xl font-semibold mb-8 text-gray-300">Technologies I Work With</h3>
+            <h3 className="text-2xl font-semibold mb-8 text-gray-300">Tech Stack</h3>
             <div className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-6 max-w-5xl mx-auto ">
               {[
                 // Programming Languages

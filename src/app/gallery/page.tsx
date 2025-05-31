@@ -11,90 +11,96 @@ export default function Gallery() {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('gallery')
-  
-   
 
   const artProjects = [
     {
       id: 1,
-      title: "Brand Identity Design",
-      category: "branding",
-      date: "2024",
-      description: "Complete brand identity package including logo, color palette, and typography for a tech startup.",
-      image: "/api/placeholder/600/400",
-      tags: ["Logo Design", "Brand Identity", "Corporate"]
+      title: "Digital OC Commission",
+      category: "illustration",
+      date: "2023",
+      description: "A digital artwork of the commissioner's OC in an anime art style.",
+      image: "/art/art_sample2.png", // Actual image path
+      tags: ["Digital Art", "Illustration", "Commissioned Work"]
     },
     {
       id: 2,
-      title: "Digital Illustration Series",
+      title: "Digital OC Commission",
       category: "illustration",
-      date: "2024",
-      description: "A collection of digital portraits exploring modern character design and vibrant color schemes.",
-      image: "/api/placeholder/600/400",
+      date: "2023",
+      description: "A digital artwork of the commissioner's OC in an anime art style.",
+      image: "/art/art_sample3.png", // Actual image path
       tags: ["Digital Art", "Character Design", "Illustration"]
     },
     {
       id: 3,
-      title: "Web Design Concept",
-      category: "web-design",
+      title: "Digital OC Commission",
+      category: "illustration",
       date: "2023",
-      description: "Modern e-commerce website design with focus on user experience and conversion optimization.",
-      image: "/api/placeholder/600/400",
-      tags: ["UI/UX", "Web Design", "E-commerce"]
+      description: "A digital artwork of the commissioner's OCs in an anime art style.",
+      image: "/art/art_sample4.png", // Actual image path
+      tags: ["Digital Art", "Character Design", "Illustration"]
     },
     {
       id: 4,
-      title: "Poster Design Campaign",
-      category: "print",
+      title: "Digital OC Commission",
+      category: "illustration",
       date: "2023",
-      description: "Event poster series for music festival featuring bold typography and dynamic compositions.",
-      image: "/api/placeholder/600/400",
-      tags: ["Poster Design", "Typography", "Event Marketing"]
+      description: "A digital artwork of the commissioner's OCs in an anime art style.",
+      image: "/art/art_sample5.png", // Actual image path
+      tags: ["Digital Art", "Character Design", "Illustration"]
     },
     {
       id: 5,
-      title: "Mobile App Interface",
-      category: "ui-ux",
-      date: "2024",
-      description: "Clean and intuitive mobile app design for fitness tracking with gamification elements.",
-      image: "/api/placeholder/600/400",
-      tags: ["Mobile Design", "App UI", "Fitness"]
+      title: "Art Commision",
+      category: "illustration",
+      date: "2023",
+      description: "A digital artwork of the commissioner's favorite anime character in my art style.",
+      image: "/art/art_sample6.png", // Actual image path
+      tags: ["Digital Art", "Character Design", "Illustration"]
     },
     {
       id: 6,
-      title: "Abstract Art Collection",
+      title: "OC Art Commision",
       category: "illustration",
       date: "2023",
-      description: "Series of abstract digital paintings exploring geometric forms and gradient techniques.",
-      image: "/api/placeholder/600/400",
-      tags: ["Abstract Art", "Digital Painting", "Geometric"]
+      description: "A digital artwork of the commissioner's OC in my anime art style.",
+      image: "/art/art_sample7.png", // Actual image path
+      tags: ["Digital Art", "Character Design", "Illustration"]
     },
     {
       id: 7,
-      title: "Social Media Graphics",
-      category: "branding",
-      date: "2024",
-      description: "Cohesive social media template designs for small business marketing campaigns.",
-      image: "/api/placeholder/600/400",
-      tags: ["Social Media", "Templates", "Marketing"]
+      title: "Genshin Impact Fanart",
+      category: "illustration",
+      date: "2023",
+      description: "A digital artwork of a character from Genshin Impact in my anime art style.",
+      image: "/art/art_sample8.png", // Actual image path
+      tags: ["Digital Art", "Character Design", "Illustration"]
     },
     {
       id: 8,
-      title: "Editorial Layout Design",
-      category: "print",
+      title: "Genshin Impact Fanart",
+      category: "illustration",
       date: "2023",
-      description: "Magazine layout design featuring innovative typography and image composition techniques.",
-      image: "/api/placeholder/600/400",
-      tags: ["Editorial", "Layout Design", "Magazine"]
-    }
+      description: "A digital artwork of a character from Genshin Impact in my anime art style.",
+      image: "/art/art_sample9.png", // Actual image path
+      tags: ["Digital Art", "Character Design", "Illustration"]
+    },
+    {
+      id: 9,
+      title: "Genshin Impact Fanart",
+      category: "illustration",
+      date: "2023",
+      description: "A digital artwork of a character from Genshin Impact in my anime art style.",
+      image: "/art/art_sample10.jpg", // Actual image path
+      tags: ["Digital Art", "Character Design", "Illustration"]
+    },
+
   ]
 
   const categories = [
     { key: 'all', label: 'All Projects' },
-    { key: 'branding', label: 'Branding' },
     { key: 'illustration', label: 'Illustration' },
-    { key: 'web-design', label: 'Web Design' },
-    { key: 'ui-ux', label: 'UI/UX' },
+    { key: 'graphic design', label: 'Graphic Design' },
     { key: 'print', label: 'Print Design' }
   ]
 
@@ -102,103 +108,102 @@ export default function Gallery() {
     ? artProjects 
     : artProjects.filter(project => project.category === filter)
 
-
   return (
     <div className="min-h-screen text-white bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
       {/* Navigation */}
-     <nav className="fixed top-0 w-full z-50 glass-effect">
+      <nav className="fixed top-0 w-full z-50 glass-effect">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-center py-4">
+          <div className="flex justify-between items-center py-4">
             {/* Back to Portfolio */}
             <Link href="/">
-                <motion.div
+              <motion.div
                 className="flex items-center space-x-3 text-purple-400 hover:text-purple-300 transition-colors"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                >
+              >
                 <ArrowLeft size={20} />
                 <span>Back to Portfolio</span>
-                </motion.div>
+              </motion.div>
             </Link>
 
             {/* Desktop Menu */}
             <div className="hidden md:flex space-x-8">
-                {[
+              {[
                 { name: 'home', href: '/' },
                 { name: 'about', href: '/#about' },
                 { name: 'projects', href: '/#projects' },
                 { name: 'gallery', href: '/gallery' },
                 { name: 'contact', href: '/#contact' }
-                ].map((item) => (
+              ].map((item) => (
                 <motion.a
-                    key={item.name}
-                    href={item.href}
-                    className={`capitalize transition-colors hover:text-purple-400 ${
+                  key={item.name}
+                  href={item.href}
+                  className={`capitalize transition-colors hover:text-purple-400 ${
                     activeSection === item.name ? 'text-purple-400' : 'text-gray-300'
-                    }`}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
+                  }`}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                    {item.name}
+                  {item.name}
                 </motion.a>
-                ))}
+              ))}
             </div>
 
             {/* Mobile Menu Button */}
             <button
-                className="md:hidden text-gray-300 hover:text-purple-400 transition-colors"
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                aria-label="Toggle mobile menu"
+              className="md:hidden text-gray-300 hover:text-purple-400 transition-colors"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Toggle mobile menu"
             >
-                {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
-            </div>
+          </div>
         </div>
 
         {/* Mobile Menu */}
         <AnimatePresence>
-            {isMenuOpen && (
+          {isMenuOpen && (
             <motion.div
-                initial={{ opacity: 0, x: 100 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 100 }}
-                transition={{ duration: 0.3 }}
-                className="fixed top-0 right-0 h-full w-2/3 sm:w-1/2 md:hidden bg-purple-950/60 backdrop-blur-lg shadow-lg z-50"
+              initial={{ opacity: 0, x: 100 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 100 }}
+              transition={{ duration: 0.3 }}
+              className="fixed top-0 right-0 h-full w-2/3 sm:w-1/2 md:hidden bg-purple-950/60 backdrop-blur-lg shadow-lg z-50"
             >
-                <div className="px-4 py-6 space-y-6 relative h-full">
+              <div className="px-4 py-6 space-y-6 relative h-full">
                 {/* Close Button */}
                 <button
-                    onClick={() => setIsMenuOpen(false)}
-                    className="absolute top-4 right-4 text-gray-300 hover:text-purple-300 text-2xl"
-                    aria-label="Close menu"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="absolute top-4 right-4 text-gray-300 hover:text-purple-300 text-2xl"
+                  aria-label="Close menu"
                 >
-                    &times;
+                  &times;
                 </button>
 
                 {/* Menu Items */}
                 <div className="mt-12 space-y-6 text-center">
-                    {[
+                  {[
                     { name: 'home', href: '#home' },
                     { name: 'about', href: '#about' },
                     { name: 'projects', href: '#projects' },
                     { name: 'gallery', href: '/gallery' },
                     { name: 'contact', href: '#contact' }
-                    ].map((item) => (
+                  ].map((item) => (
                     <a
-                        key={item.name}
-                        href={item.href}
-                        className="block capitalize text-gray-200 hover:text-purple-300 transition-colors text-lg"
-                        onClick={() => setIsMenuOpen(false)}
+                      key={item.name}
+                      href={item.href}
+                      className="block capitalize text-gray-200 hover:text-purple-300 transition-colors text-lg"
+                      onClick={() => setIsMenuOpen(false)}
                     >
-                        {item.name}
+                      {item.name}
                     </a>
-                    ))}
+                  ))}
                 </div>
-                </div>
+              </div>
             </motion.div>
-            )}
+          )}
         </AnimatePresence>
-        </nav>
+      </nav>
 
       <div className="pt-20 px-4">
         {/* Header */}
@@ -212,8 +217,7 @@ export default function Gallery() {
             Creative Gallery
           </h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            A showcase of my graphic design and digital art projects, 
-            spanning branding, illustration, and user interface design.
+            A showcase of my graphic design and digital art projects.
           </p>
         </motion.div>
 
@@ -263,9 +267,11 @@ export default function Gallery() {
                   <div className="aspect-[4/3] bg-gradient-to-br from-purple-600 to-pink-600 relative overflow-hidden">
                     <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300" />
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="text-6xl font-bold opacity-20">
-                        {project.title.charAt(0)}
-                      </div>
+                      <img  
+                        src={project.image} 
+                        alt={project.title}
+                        className="w-full h-full object-cover"
+                      />
                     </div>
                     <div className="absolute top-4 left-4">
                       <span className="px-3 py-1 text-xs bg-black/30 text-white rounded-full backdrop-blur-sm">
