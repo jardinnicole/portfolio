@@ -43,7 +43,7 @@ export default function Portfolio() {
       title: "Salonytics: A Web-based Resource Management System with Predictive Analytics",
       description: "A comprehensive web application for managing resources, schedules, and analytics in salons.",
       tech: ["ASP.Net", "MS SQL", "Azure", "ML.NET", "Bootstrap"],
-      image: "/api/placeholder/400/250",
+      image: "/images/salonytics.png",
       github: "#",
       live: "#"
     },
@@ -375,12 +375,12 @@ export default function Portfolio() {
                 className="glass-effect rounded-2xl overflow-hidden group hover:scale-105 transition-all duration-300"
               >
                 <div className="aspect-video bg-gradient-to-br from-purple-600 to-pink-600 relative overflow-hidden">
+                  <img  
+                    src={project.image} 
+                    alt={project.title}
+                    className="w-full h-full object-cover"
+                  />
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300" />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-6xl font-bold opacity-20">
-                      {project.title.charAt(0)}
-                    </div>
-                  </div>
                 </div>
                 
                 <div className="p-6">
